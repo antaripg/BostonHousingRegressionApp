@@ -6,13 +6,13 @@ from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
 
 
-st.set_page_config(page_title="Boston Housing Prediction App", page_icon="🏘️")
+st.set_page_config(page_title="California Housing Prediction App", page_icon="🏘️")
 
-st.title("Boston Housing Prediction App")
-st.markdown("### This app predicts the **Boston House Price**!")
+st.title("California Housing Prediction App")
+st.markdown("### This app predicts the **California House Price**!")
 st.write("---")
 
-# Load the Boston Dataset
+# Load the California Dataset
 st.cache_data()
 def get_data():
     california = datasets.fetch_california_housing()
