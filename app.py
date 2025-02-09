@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import shap
 import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.ensemble import RandomForestRegressor
 
 
 st.set_page_config(page_title="California Housing Prediction App", page_icon="🏘️")
@@ -14,16 +12,7 @@ st.write("---")
 
 # Load the California Dataset
 st.cache_data()
-def get_data():
-    california = datasets.fetch_california_housing()
-    # st.write(california.keys())
-    # st.write(california.target_names)
-    # california_df = pd.DataFrame(california.data, columns=california.feature_names)
-    # st.dataframe(california_df)
-    feature_names = california.feature_names
-    X = pd.DataFrame(california.data, columns=california.feature_names)
-    Y = pd.DataFrame(california.target, columns=["MEDV"])
-    return X, Y, feature_names
+
 
 X, Y, feature_names = get_data()
 
@@ -31,7 +20,7 @@ X, Y, feature_names = get_data()
 st.cache_resource()
 def call_model(X, Y):
     model = RandomForestRegressor()
-    model.fit(X, Y)
+    model.fit(X, Y.to_numpy().ravel())
 
 model = call_model(X, Y)
 # Sidebar
