@@ -11,40 +11,40 @@ st.markdown("### This app predicts the **California House Price**!")
 st.write("---")
 
 # Load the California Dataset
-st.cache_data()
+# st.cache_data()
 
 
-X, Y, feature_names = get_data()
+# X, Y, feature_names = get_data()
 
-# Build Regression Model
-st.cache_resource()
-def call_model(X, Y):
-    model = RandomForestRegressor()
-    model.fit(X, Y.to_numpy().ravel())
+# # Build Regression Model
+# st.cache_resource()
+# def call_model(X, Y):
+#     model = RandomForestRegressor()
+#     model.fit(X, Y.to_numpy().ravel())
 
-model = call_model(X, Y)
-# Sidebar
-# Header of Specify Input Parameters
-st.sidebar.header('Specify Input Parameters')
+# model = call_model(X, Y)
+# # Sidebar
+# # Header of Specify Input Parameters
+# st.sidebar.header('Specify Input Parameters')
 
-def user_input_features(feature_names: list):
-    feature_data_dict = {}
+# def user_input_features(feature_names: list):
+#     feature_data_dict = {}
 
-    for feature_name in feature_names:
-        feature_data_dict[feature_name] = st.sidebar.slider(feature_name,
-                                                            X[feature_name].min(),
-                                                            X[feature_name].max(),
-                                                            X[feature_name].mean())
-        features = pd.DataFrame(feature_data_dict, index=[0])
-    return features
+#     for feature_name in feature_names:
+#         feature_data_dict[feature_name] = st.sidebar.slider(feature_name,
+#                                                             X[feature_name].min(),
+#                                                             X[feature_name].max(),
+#                                                             X[feature_name].mean())
+#         features = pd.DataFrame(feature_data_dict, index=[0])
+#     return features
 
-df = user_input_features(feature_names=feature_names)
+# df = user_input_features(feature_names=feature_names)
 
-# Main Panel
-# Print specified input parameters
-st.header('Specified Input parameters')
-st.write(df)
-st.write('---')
+# # Main Panel
+# # Print specified input parameters
+# st.header('Specified Input parameters')
+# st.write(df)
+# st.write('---')
 
 
 # Apply Model to Make Prediction
